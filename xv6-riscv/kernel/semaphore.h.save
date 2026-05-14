@@ -1,0 +1,16 @@
+#ifndef _SEMAPHORE_H_
+#define _SEMAPHORE_H_
+
+#include "spinlock.h"
+
+struct semaphore {
+  int value;              // how many can enter
+  struct spinlock lock;   // protects the value
+};
+
+// functions
+void sem_init(struct semaphore *s, int value);
+void sem_wait(struct semaphore *s);
+void sem_signal(struct semaphore *s);
+
+#endif
